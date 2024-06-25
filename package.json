@@ -1,0 +1,95 @@
+{
+  "name": "chinese-variable-naming",
+  "displayName": "中文变量命名",
+  "description": "根据选中的中文进行变量命名",
+  "version": "0.0.4",
+  "publisher": "houengineer",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "中文变量命名",
+    "变量命名",
+    "变量名",
+    "翻译",
+    "named",
+    "naming",
+    "variable",
+    "translate"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HouEngineer/vsce-chinese-variable-naming.git"
+  },
+  "icon": "images/icon.png",
+  "contributes": {
+    "commands": [
+      {
+        "command": "chinese-variable-naming.naming",
+        "title": "中文变量命名"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorHasSelection",
+          "command": "chinese-variable-naming.naming",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "chinese-variable-naming.naming",
+        "key": "ctrl+n",
+        "mac": "cmd+n",
+        "when": "editorHasSelection"
+      }
+    ],
+    "configuration": [
+      {
+        "title": "中文变量命名",
+        "properties": {
+          "chinese-variable-naming.appid": {
+            "type": "string",
+            "default": "",
+            "description": "百度翻译API-appid"
+          },
+          "chinese-variable-naming.secret": {
+            "type": "string",
+            "default": "",
+            "description": "百度翻译API-密钥"
+          }
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.88.0",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "@vscode/test-cli": "^0.0.8",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "md5": "^2.3.0"
+  }
+}
